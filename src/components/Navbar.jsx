@@ -32,7 +32,9 @@ const Navbar = () => {
           Queries
         </NavLink>
       </li>
-      <li>
+     {
+      user?.email? <>
+       <li>
         <NavLink
           to={"/"}
           className={({ isActive }) => {
@@ -68,6 +70,8 @@ const Navbar = () => {
           My recommendations
         </NavLink>
       </li>
+      </>:''
+     }
     </>
   );
   return (
@@ -87,7 +91,7 @@ const Navbar = () => {
         <div className=" navbar-end">
           <div className="">
             {user ? (
-              <button className="btn " onClick={()=>logOut()}>Logout</button>
+              <button className="btn bg-[#A91D3A] text-white" onClick={()=>logOut()}>Logout</button>
             ) : (
               <Link to={"/login"}>
                 <button className="btn bg-[#A91D3A] text-white hover:bg-[#a7354c]">
