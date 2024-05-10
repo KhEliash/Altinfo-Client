@@ -13,7 +13,7 @@ const Navbar = () => {
           to={"/"}
           className={({ isActive }) => {
             return isActive
-              ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
               : "";
           }}
         >
@@ -25,7 +25,7 @@ const Navbar = () => {
           to={"/queries"}
           className={({ isActive }) => {
             return isActive
-              ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
               : "";
           }}
         >
@@ -39,7 +39,7 @@ const Navbar = () => {
           to={"/recommendation"}
           className={({ isActive }) => {
             return isActive
-              ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
               : "";
           }}
         >
@@ -51,7 +51,7 @@ const Navbar = () => {
           to={"/myqueries"}
           className={({ isActive }) => {
             return isActive
-              ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
               : "";
           }}
         >
@@ -63,7 +63,7 @@ const Navbar = () => {
           to={"/myrecommendation"}
           className={({ isActive }) => {
             return isActive
-              ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
               : "";
           }}
         >
@@ -78,9 +78,9 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-200 ">
         <div className="navbar-start">
-          <a className="btn btn-ghost text-xl">
+          <Link to={'/'} className="btn btn-ghost text-xl" >
             <img src={logo} alt="" className="w-12 rounded-xl" />
-          </a>
+          </Link>
           <h1 className="text-3xl  font-bold text-[#A91D3A]">ALTINFOHUB</h1>
         </div>
 

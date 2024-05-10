@@ -8,7 +8,13 @@ import loginimg from '../../assets/images/login.jpg';
 const LogIn = () => {
     const {googleLogIn ,signIn}= useContext(AuthContext);
     const handleGoogle=() =>{
-         googleLogIn();
+         googleLogIn()
+         .then(() => {
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.log(error.message);
+           })
     }
     const handleLogin = (e)=>{
         e.preventDefault();

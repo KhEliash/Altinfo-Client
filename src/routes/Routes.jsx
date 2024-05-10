@@ -7,11 +7,13 @@ import Queries from "../pages/Queries";
 import RecomendetionMe from "../pages/RecomendetionMe";
 import MyQueries from "../pages/MyQueries";
 import MyRecommendation from "../pages/MyRecommendation";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main/>,
+        errorElement:<Error></Error>,
          children: [
             {
                 index: true,
