@@ -22,7 +22,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={"/"}
+          to={"/queries"}
           className={({ isActive }) => {
             return isActive
               ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
@@ -36,7 +36,7 @@ const Navbar = () => {
       user?.email? <>
        <li>
         <NavLink
-          to={"/"}
+          to={"/recommendation"}
           className={({ isActive }) => {
             return isActive
               ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
@@ -48,7 +48,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={"/"}
+          to={"/myqueries"}
           className={({ isActive }) => {
             return isActive
               ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"
@@ -60,7 +60,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={"/"}
+          to={"/myrecommendation"}
           className={({ isActive }) => {
             return isActive
               ? "text-orange-500 rounded-none border-4 border-t-0 border-x-0 border-b-orange-500"

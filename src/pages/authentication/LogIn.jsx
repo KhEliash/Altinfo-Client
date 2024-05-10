@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import logo from '../../assets/images/altinfo.png'
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import loginimg from '../../assets/images/login.jpg';
 
 
 const LogIn = () => {
@@ -24,9 +25,8 @@ const LogIn = () => {
         <div
           className="hidden bg-cover lg:block lg:w-1/2 "
         
-          // style="background-image: url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80');"
-        >
-            <img src='https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80' alt="" />
+         >
+            <img src={loginimg} alt="" className='w-full h-full'/>
         </div>
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
