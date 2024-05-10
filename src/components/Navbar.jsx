@@ -1,8 +1,11 @@
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/images/altinfo.png";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-     
+  const { user, logOut } = useContext(AuthContext);
+
   const links = (
     <>
       <li>
@@ -26,7 +29,7 @@ const Navbar = () => {
               : "";
           }}
         >
-         Queries 
+          Queries
         </NavLink>
       </li>
       <li>
@@ -38,8 +41,7 @@ const Navbar = () => {
               : "";
           }}
         >
-         Recommendations
-For Me
+          Recommendations For Me
         </NavLink>
       </li>
       <li>
@@ -51,7 +53,7 @@ For Me
               : "";
           }}
         >
-         My Queries
+          My Queries
         </NavLink>
       </li>
       <li>
@@ -63,10 +65,9 @@ For Me
               : "";
           }}
         >
-        My recommendations
+          My recommendations
         </NavLink>
       </li>
-         
     </>
   );
   return (
@@ -85,12 +86,16 @@ For Me
 
         <div className=" navbar-end">
           <div className="">
-            <Link to={'/login'}>
-              <button className="btn bg-[#A91D3A] text-white hover:bg-[#a7354c]">
-                {" "}
-                Log-in
-              </button>
-            </Link>
+            {user ? (
+              <button className="btn " onClick={()=>logOut()}>Logout</button>
+            ) : (
+              <Link to={"/login"}>
+                <button className="btn bg-[#A91D3A] text-white hover:bg-[#a7354c]">
+                 
+                  Log-in
+                </button>
+              </Link>
+            )}
           </div>
           <div className="dropdown dropdown-end lg:hidden">
             <div

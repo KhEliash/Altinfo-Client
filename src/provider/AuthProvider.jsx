@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
-  GithubAuthProvider,
+  
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
@@ -15,10 +15,11 @@ import { app } from "../firebase/firebase.config";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-const githubProvider = new GithubAuthProvider();
+ 
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  console.log(user);
   const [loading, setLoading] = useState(true);
   // create user
   const createUser = (email, password) => {
@@ -45,10 +46,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
   // git hub
-  const githubLogIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, githubProvider);
-  };
+  // const githubLogIn = () => {
+  //   setLoading(true);
+  //   return signInWithPopup(auth, githubProvider);
+  // };
 
   const logOut = () => {
     setLoading(true);
@@ -72,7 +73,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     loading,
     googleLogIn,
-    githubLogIn,
+    
     logOut,
     updateUserProfile,
   };
