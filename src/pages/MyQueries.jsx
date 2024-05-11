@@ -1,6 +1,34 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const MyQueries = () => {
+  const { user } = useContext(AuthContext);
+  const [queries, setQueries] = useState();
+  const [querie, setQuerie] = useState([]);
+  const arr = querie.sort(
+    (a, b) =>
+      new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
+  );
+  console.log(arr);
+  //   const querie = queries;
+  //   console.log(querie);
+  // get data my email
+  useEffect(() => {
+    fetch(`http://localhost:5000/myQueries?userEmail=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setQueries(data);
+        setQuerie(data);
+      });
+  }, [user]);
+ 
+  //     if (querie.length > 0) {
+  //       const sortedQuerie = querie.slice().sort((a, b) => new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes));
+  //       setQuerie(sortedQuerie);
+  //     }
+  //   }, [querie]);
+
   return (
     <div>
       {/* add queries div */}
@@ -13,6 +41,9 @@ const MyQueries = () => {
           </button>
         </Link>
       </div>
+
+      {/* my queries */}
+      <div></div>
     </div>
   );
 };

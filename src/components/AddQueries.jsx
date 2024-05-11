@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
@@ -50,10 +51,16 @@ const AddQueries = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          if(data.insertedId){
+            Swal({
+                title: "Good job!",
+                text: "You Successfully Added a Query!",
+                icon: "success",
+              });
+        
+          }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+         
       console.log(product);
       //    console.log("Form data:", product);
     } catch (error) {
