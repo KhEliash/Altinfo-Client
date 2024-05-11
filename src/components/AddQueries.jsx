@@ -1,8 +1,50 @@
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+
 const AddQueries = () => {
+  const { user } = useContext(AuthContext);
+  const handleAdd = (e) => {
+    e.preventDefault();
+    try {
+      const form = e.target;
+      const productName = form.productName.value;
+      const productBrand = form.productBrand.value;
+      const productImageURL = form.productImageURL.value;
+      const queryTitle = form.queryTitle.value;
+      const boycottingReason = form.boycottingReason.value;
+      const userEmail = user.email;
+      const userName = user.displayName;
+      const userImage = user.photoURL;
+      const recommendationCount = 0;
+  
+      const product = {
+        productName,
+        productBrand,
+        productImageURL,
+        queryTitle,
+        boycottingReason,
+        userInfo: {
+          userEmail,
+          userName,
+          userImage,
+          recommendationCount
+        }
+        
+      };
+      console.log(product);
+       console.log("Form data:", product);
+    } catch (error) {
+      console.error("Error occurred during form submission:", error);
+     }
+  };
+  
   return (
     <div className="flex justify-center items-center bg-[#EEEEEE]">
       <div className="shadow-2xl w-1/2 bg-[#C73659] rounded-xl  my-6">
-        <form className="max-w-lg mx-auto mt-8 px-4 lg:px-0 ">
+        <form
+          className="max-w-lg mx-auto mt-8 px-4 lg:px-0 "
+          onSubmit={handleAdd}
+        >
           <div className="mb-4">
             <label className="block     font-bold mb-2" htmlFor="productName">
               Product Name
