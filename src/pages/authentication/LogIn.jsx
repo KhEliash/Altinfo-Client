@@ -1,19 +1,33 @@
 import { useContext } from 'react';
 import logo from '../../assets/images/altinfo.png'
 import { AuthContext } from '../../provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate,   } from 'react-router-dom';
 import loginimg from '../../assets/images/login.jpg';
+import Swal from 'sweetalert2';
 
 
 const LogIn = () => {
     const {googleLogIn ,signIn}= useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleGoogle=() =>{
          googleLogIn()
-         .then(() => {
-            window.location.reload();
+         .then((result) => {
+            
+            Swal.fire({
+                title: "Good job!",
+                text: "You Successfully Loged in!",
+                icon: "success"
+              });
+              navigate(location?.state ? location.state : "/");
           })
           .catch((error) => {
             console.log(error.message);
+            Swal.fire({
+                title: "Oops!",
+                text: `${error.message}`,
+                icon: "error"
+              });
            })
     }
     const handleLogin = (e)=>{
@@ -21,7 +35,23 @@ const LogIn = () => {
         const form =  e.target
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email,password);
+        signIn(email,password)
+        .then((result) => {
+            
+            Swal.fire({
+                title: "Good job!",
+                text: "You Successfully Loged in!",
+                icon: "success"
+              });
+          })
+          .catch((error) => {
+            console.log(error.message);
+            Swal.fire({
+                title: "Oops!",
+                text: `${error.message}`,
+                icon: "error"
+              });
+           })
          
 
     }

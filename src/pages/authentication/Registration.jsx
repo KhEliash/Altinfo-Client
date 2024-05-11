@@ -4,6 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import regimg from '../../assets/images/regis.avif';
 
 import logo from "../../assets/images/altinfo.png";
+import Swal from "sweetalert2";
 
 const Registration = () => {
     const {createUser,updateUserProfile}= useContext(AuthContext);
@@ -15,8 +16,26 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name,photo,email,password);
-        createUser(email,password);
+        createUser(email,password)
+        .then((result) => {
+            
+            Swal.fire({
+                title: "Good job!",
+                text: "You Successfully Loged in!",
+                icon: "success"
+              });
+               
+          })
+          .catch((error) => {
+            console.log(error.message);
+            Swal.fire({
+                title: "Oops!",
+                text: `${error.message}`,
+                icon: "error"
+              });
+           })
         updateUserProfile(name,photo);
+        
 
     }
   return (
