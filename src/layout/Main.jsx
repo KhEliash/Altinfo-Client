@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 const Main = () => {
   return (
     <div>
+    <div className="container mx-auto">
       {/* navbar */}
       <Navbar></Navbar>
 
@@ -13,8 +14,10 @@ const Main = () => {
         <Outlet></Outlet>
       </div>
 
-      {/* footer */}
-      <Footer />
+  
+    </div>
+        {/* footer */}
+        <Footer />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Slider from "../components/Slider";
 
 const Home = () => {
     return (
-        <div>
+        <div className="container mx-auto">
             <Slider></Slider>
             <Banner></Banner>
         </div>

@@ -47,7 +47,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/myqueries",
-        element: <MyQueries></MyQueries>,
+        element:<PrivetRouts>
+             <MyQueries></MyQueries>
+        </PrivetRouts>,
       },
       {
         path: "/myrecommendation",

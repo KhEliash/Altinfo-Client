@@ -16,7 +16,15 @@ const AddQueries = () => {
       const userName = user.displayName;
       const userImage = user.photoURL;
       const recommendationCount = 0;
-  
+
+      // Get the current timestamp in milliseconds
+      const currentTimeInMillis = Date.now();
+
+      // Convert the timestamp to a human-readable format
+      const currentTime = new Date(currentTimeInMillis);
+
+      const currentTimes = currentTime;
+
       const product = {
         productName,
         productBrand,
@@ -27,17 +35,32 @@ const AddQueries = () => {
           userEmail,
           userName,
           userImage,
-          recommendationCount
-        }
-        
+          currentTimes,
+          recommendationCount,
+        },
       };
+      //   post data to mongodb
+      fetch("http://localhost:5000/queries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       console.log(product);
-       console.log("Form data:", product);
+      //    console.log("Form data:", product);
     } catch (error) {
       console.error("Error occurred during form submission:", error);
-     }
+    }
   };
-  
+
   return (
     <div className="flex justify-center items-center bg-[#EEEEEE]">
       <div className="shadow-2xl w-1/2 bg-[#C73659] rounded-xl  my-6">
