@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [queries, setQueries] = useState();
   const [querie, setQuerie] = useState([]);
+
   const arr = querie.sort(
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
@@ -22,7 +24,7 @@ const MyQueries = () => {
         setQuerie(data);
       });
   }, [user]);
- 
+
   //     if (querie.length > 0) {
   //       const sortedQuerie = querie.slice().sort((a, b) => new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes));
   //       setQuerie(sortedQuerie);
@@ -43,7 +45,28 @@ const MyQueries = () => {
       </div>
 
       {/* my queries */}
-      <div></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12  bg-[#EEEEEE] p-4 rounded-xl">
+        {querie.map((c) => (
+          <div key={c._id} className="card bg-base-100 shadow-xl">
+            <figure className="px-10 pt-10">
+              <img
+                src={c.productImageURL}
+                alt="Shoes"
+                className="rounded-xl h-[250px] "
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{c.productName}</h2>
+              <p className="text-2xl font-bold"> {c.productBrand}</p>
+              <div className="card-actions">
+                <button className="btn bg-[#c0425c] hover:bg-[#C73659] text-white">View Details</button>
+                <button className="btn bg-[#1da957] hover:bg-[#36c7a7] text-white">Update</button>
+                <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">Delete</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
