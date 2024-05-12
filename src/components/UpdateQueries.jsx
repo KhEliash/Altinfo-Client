@@ -8,7 +8,7 @@ const UpdateQueries = () => {
   const [product, setProduct] = useState({});
   console.log(id, product);
   useEffect(() => {
-    fetch(`http://localhost:5000/singleQueries/${id}`)
+    fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -31,7 +31,7 @@ const UpdateQueries = () => {
       queryTitle,
       boycottingReason,
     };
-    fetch(`http://localhost:5000/updateQueries/${id}`, {
+    fetch(`https://altinfohub.vercel.app/updateQueries/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

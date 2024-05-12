@@ -17,7 +17,7 @@ const MyQueries = () => {
 
   // get data my email
   useEffect(() => {
-    fetch(`http://localhost:5000/myQueries?userEmail=${user?.email}`)
+    fetch(`https://altinfohub.vercel.app/myQueries?userEmail=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setQueries(data);
@@ -36,7 +36,7 @@ const MyQueries = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://altinfohub.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -57,7 +57,7 @@ const MyQueries = () => {
   return (
     <div>
       {/* add queries div */}
-      <div className="mt-8 bg-[#EEEEEE] p-5 text-center">
+      <div className="mt-8 bg-base-200 data- p-5 text-center">
         <h2 className="text-2xl font-semibold mb-4">Add Queries</h2>
         <p className="text-gray-600 mb-4">Wanna add a queries? Add one....</p>
         <Link to={"/addqueries"}>
@@ -66,15 +66,16 @@ const MyQueries = () => {
           </button>
         </Link>
       </div>
+     
 
       <div>
         {/* if no queries */}
         {queries?.length === 0 && (
-          <div className="bg-gray-200 p-4 text-center font-bold text-red-500">No queries found.</div>
+          <div className="bg-base-200 p-4 text-center font-bold text-red-500">No queries found.</div>
         )}
       </div>
       {/* my queries */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12  bg-[#EEEEEE] p-4 rounded-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12  bg-base-200 p-4 rounded-xl">
         {querie.map((c) => (
           <div key={c._id} className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">

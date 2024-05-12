@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Queries = () => {
   const queries = useLoaderData();
+  const [columns, setColumns] = useState(3);
+  console.log(columns);
   const allQuaries = queries;
 
   allQuaries.sort((a, b) => {
@@ -11,9 +14,38 @@ const Queries = () => {
     return timeB - timeA;
   });
   console.log(allQuaries);
+
+  // Function to handle grid layout change
+  const handleGridToggle = (numColumns) => {
+    setColumns(numColumns);
+  };
+
   return (
-    <div className="my-12 bg-[#EEEEEE] p-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="my-12 bg-base-200 p-5">
+      {/* Toggle buttons */}
+      <div className="flex justify-center mb-4">
+        <button
+          onClick={() => handleGridToggle(1)}
+          className="btn mx-2 bg-red-800 text-white"
+        >
+          1 Column
+        </button>
+        <button
+          onClick={() => handleGridToggle(2)}
+          className="btn mx-2 bg-red-800 text-white"
+        >
+          2 Columns
+        </button>
+        <button
+          onClick={() => handleGridToggle(3)}
+          className="btn mx-2 bg-red-800 text-white"
+        >
+          3 Columns
+        </button>
+      </div>
+      <div
+        className={`grid grid-cols-${columns} md:grid-cols-${columns} gap-4`}
+      >
         {allQuaries.map((c) => {
           return (
             <div key={c._id} className="card bg-base-100 shadow-xl">

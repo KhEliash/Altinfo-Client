@@ -6,7 +6,7 @@ const ViewDetails = () => {
   const [product, setProduct] = useState({});
     console.log( product.userInfo);
   useEffect(() => {
-    fetch(`http://localhost:5000/singleQueries/${id}`)
+    fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -62,7 +62,7 @@ const ViewDetails = () => {
     
     </div>
 
-    
+
     </div>
   );
 };
