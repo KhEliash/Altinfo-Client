@@ -10,6 +10,7 @@ import MyRecommendation from "../pages/MyRecommendation";
 import Error from "../components/Error";
 import AddQueries from "../components/AddQueries";
 import PrivetRouts from "./PrivateRoutes";
+import ViewDetails from "../components/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/myrecommendation",
         element: <MyRecommendation></MyRecommendation>,
+      },
+      {
+        path: "/viewdetails/:id",
+        element: <ViewDetails></ViewDetails>,
       },
     ],
   },

@@ -12,7 +12,7 @@ const MyQueries = () => {
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
   );
-  console.log(arr);
+  // console.log(arr);
   //   const querie = queries;
   //   console.log(querie);
   // get data my email
@@ -59,9 +59,17 @@ const MyQueries = () => {
               <h2 className="card-title">{c.productName}</h2>
               <p className="text-2xl font-bold"> {c.productBrand}</p>
               <div className="card-actions">
-                <button className="btn bg-[#c0425c] hover:bg-[#C73659] text-white">View Details</button>
-                <button className="btn bg-[#1da957] hover:bg-[#36c7a7] text-white">Update</button>
-                <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">Delete</button>
+                <Link to={`/viewdetails/${c._id}`}>
+                  <button className="btn bg-[#c0425c] hover:bg-[#C73659] text-white">
+                    View Details
+                  </button>
+                </Link>
+                <button className="btn bg-[#1da957] hover:bg-[#36c7a7] text-white">
+                  Update
+                </button>
+                <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
+                  Delete
+                </button>
               </div>
             </div>
           </div>
