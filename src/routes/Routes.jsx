@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/queries",
         element: <Queries></Queries>,
-        loader: () =>fetch("http://localhost:5000/queries"),
+        loader: () => fetch("http://localhost:5000/queries"),
       },
       {
         path: "/addqueries",
@@ -50,9 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myqueries",
-        element:<PrivetRouts>
-             <MyQueries></MyQueries>
-        </PrivetRouts>,
+        element: (
+          <PrivetRouts>
+            <MyQueries></MyQueries>
+          </PrivetRouts>
+        ),
       },
       {
         path: "/myrecommendation",
@@ -60,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewdetails/:id",
-        element: <ViewDetails></ViewDetails>,
+        element: (
+          <PrivetRouts>
+            <ViewDetails></ViewDetails>
+          </PrivetRouts>
+        ),
       },
       {
         path: "/update/:id",
