@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [queries, setQueries] = useState();
   const [querie, setQuerie] = useState([]);
+  const [control, setControl] = useState(false);
 
   const arr = querie.sort(
     (a, b) =>
@@ -21,9 +23,36 @@ const MyQueries = () => {
         setQueries(data);
         setQuerie(data);
       });
-  }, [user]);
+  }, [user,control]);
 
- 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              setControl(!control);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -63,7 +92,9 @@ const MyQueries = () => {
                     Update
                   </button>
                 </Link>
-                <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
+                <button
+                  onClick={() => handleDelete(c._id)}
+                className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
                   Delete
                 </button>
               </div>
