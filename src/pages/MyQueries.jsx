@@ -14,7 +14,7 @@ const MyQueries = () => {
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
   );
- 
+
   // get data my email
   useEffect(() => {
     fetch(`http://localhost:5000/myQueries?userEmail=${user?.email}`)
@@ -23,7 +23,7 @@ const MyQueries = () => {
         setQueries(data);
         setQuerie(data);
       });
-  }, [user,control]);
+  }, [user, control]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -67,6 +67,12 @@ const MyQueries = () => {
         </Link>
       </div>
 
+      <div>
+        {/* if no queries */}
+        {queries?.length === 0 && (
+          <div className="bg-gray-200 p-4 text-center font-bold text-red-500">No queries found.</div>
+        )}
+      </div>
       {/* my queries */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12  bg-[#EEEEEE] p-4 rounded-xl">
         {querie.map((c) => (
@@ -94,7 +100,8 @@ const MyQueries = () => {
                 </Link>
                 <button
                   onClick={() => handleDelete(c._id)}
-                className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
+                  className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white"
+                >
                   Delete
                 </button>
               </div>
