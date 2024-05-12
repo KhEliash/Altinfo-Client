@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const ViewDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-//   console.log(id, product);
+  //   console.log(id, product);
   useEffect(() => {
     fetch(`http://localhost:5000/singleQueries/${id}`)
       .then((res) => res.json())

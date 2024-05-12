@@ -1,48 +1,38 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddQueries = () => {
-  const { user } = useContext(AuthContext);
-  const handleAdd = (e) => {
-    e.preventDefault();
+const UpdateQueries = () => {
+  const { id } = useParams();
+  console.log(id);
+  const [product, setProduct] = useState({});
+  console.log(id, product);
+  useEffect(() => {
+    fetch(`http://localhost:5000/singleQueries/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data);
+        // console.log(data);
+      });
+  }, [id]);
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
     const form = e.target;
     const productName = form.productName.value;
     const productBrand = form.productBrand.value;
     const productImageURL = form.productImageURL.value;
     const queryTitle = form.queryTitle.value;
     const boycottingReason = form.boycottingReason.value;
-    const userEmail = user.email;
-    const userName = user.displayName;
-    const userImage = user.photoURL;
-    const recommendationCount = 0;
-
-    // Get the current timestamp in milliseconds
-    const currentTimeInMillis = Date.now();
-
-    // Convert the timestamp to a human-readable format
-    const currentTime = new Date(currentTimeInMillis);
-
-    const currentTimes = currentTime;
-
     const product = {
       productName,
       productBrand,
       productImageURL,
       queryTitle,
       boycottingReason,
-      userInfo: {
-        userEmail,
-        userName,
-        userImage,
-        currentTimes,
-        recommendationCount,
-      },
     };
-    //   post data to mongodb
-    fetch("http://localhost:5000/queries", {
-      method: "POST",
+    fetch(`http://localhost:5000/updateQueries/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -51,21 +41,26 @@ const AddQueries = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+
+        if (data.modifiedCount > 0) {
           Swal.fire({
-            text: "You Successfully Added a Query!",
+            text: "Updated successfully",
             icon: "success",
+          });
+        } else {
+          Swal.fire({
+            text: "Please recheck your steps or Rewrite something",
+            icon: "error",
           });
         }
       });
   };
-
   return (
     <div className="flex justify-center items-center bg-[#EEEEEE]">
       <div className="shadow-2xl w-1/2 bg-[#C73659] rounded-xl  my-6">
         <form
           className="max-w-lg mx-auto mt-8 px-4 lg:px-0 "
-          onSubmit={handleAdd}
+          onSubmit={handleUpdate}
         >
           <div className="mb-4">
             <label className="block     font-bold mb-2" htmlFor="productName">
@@ -76,8 +71,6 @@ const AddQueries = () => {
               id="productName"
               type="text"
               name="productName"
-              // value={formData.productName}
-              // onChange={handleChange}
               placeholder="Enter product name"
             />
           </div>
@@ -91,8 +84,6 @@ const AddQueries = () => {
               id="productBrand"
               type="text"
               name="productBrand"
-              // value={formData.productBrand}
-              // onChange={handleChange}
               placeholder="Enter product brand"
             />
           </div>
@@ -109,8 +100,6 @@ const AddQueries = () => {
               id="productImageURL"
               type="text"
               name="productImageURL"
-              // value={formData.productImageURL}
-              // onChange={handleChange}
               placeholder="Enter product image URL"
             />
           </div>
@@ -124,8 +113,6 @@ const AddQueries = () => {
               id="queryTitle"
               type="text"
               name="queryTitle"
-              // value={formData.queryTitle}
-              // onChange={handleChange}
               placeholder="Enter query title"
             />
           </div>
@@ -141,8 +128,6 @@ const AddQueries = () => {
               className="  shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="boycottingReason"
               name="boycottingReason"
-              // value={formData.boycottingReason}
-              // onChange={handleChange}
               placeholder="Enter boycotting reason details"
               rows="4"
             ></textarea>
@@ -152,7 +137,7 @@ const AddQueries = () => {
             className="btn-block mb-3 bg-[#151515] hover:bg-[#9d4242] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Add Query
+            Update Query
           </button>
         </form>
       </div>
@@ -160,4 +145,4 @@ const AddQueries = () => {
   );
 };
 
-export default AddQueries;
+export default UpdateQueries;

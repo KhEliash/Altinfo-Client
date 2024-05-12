@@ -11,6 +11,7 @@ import Error from "../components/Error";
 import AddQueries from "../components/AddQueries";
 import PrivetRouts from "./PrivateRoutes";
 import ViewDetails from "../components/ViewDetails";
+import UpdateQueries from "../components/UpdateQueries";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/viewdetails/:id",
         element: <ViewDetails></ViewDetails>,
+      },
+      {
+        path: "/update/:id",
+        element: <UpdateQueries></UpdateQueries>,
       },
     ],
   },

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
@@ -12,9 +12,7 @@ const MyQueries = () => {
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
   );
-  // console.log(arr);
-  //   const querie = queries;
-  //   console.log(querie);
+ 
   // get data my email
   useEffect(() => {
     fetch(`http://localhost:5000/myQueries?userEmail=${user?.email}`)
@@ -25,11 +23,7 @@ const MyQueries = () => {
       });
   }, [user]);
 
-  //     if (querie.length > 0) {
-  //       const sortedQuerie = querie.slice().sort((a, b) => new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes));
-  //       setQuerie(sortedQuerie);
-  //     }
-  //   }, [querie]);
+ 
 
   return (
     <div>
@@ -64,9 +58,11 @@ const MyQueries = () => {
                     View Details
                   </button>
                 </Link>
-                <button className="btn bg-[#1da957] hover:bg-[#36c7a7] text-white">
-                  Update
-                </button>
+                <Link to={`/update/${c._id}`}>
+                  <button className="btn bg-[#1da957] hover:bg-[#36c7a7] text-white">
+                    Update
+                  </button>
+                </Link>
                 <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
                   Delete
                 </button>
