@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/images/altinfo.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
@@ -157,12 +158,9 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={user.photoURL}
-                />
-              </div>
+              {/* <div className="w-10 rounded-full"> */}
+                <FaBars/>
+              {/* </div> */}
             </div>
             <ul
               tabIndex={0}

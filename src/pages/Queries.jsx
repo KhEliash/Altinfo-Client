@@ -44,7 +44,8 @@ const Queries = () => {
         </button>
       </div>
       <div
-        className={`grid grid-cols-${columns} md:grid-cols-${columns} gap-4`}
+         
+        className={`grid ${columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-4`}
       >
         {allQuaries.map((c) => {
           return (
