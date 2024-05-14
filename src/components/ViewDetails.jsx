@@ -7,14 +7,15 @@ const ViewDetails = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   const { id } = useParams();
+  console.log(id);
   const [product, setProduct] = useState({});
   console.log(product);
   useEffect(() => {
-    fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
+    fetch(`http://localhost:5000/singleQueries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
-        // console.log(data);
+        console.log(data);
       });
   }, [id]);
 
@@ -55,6 +56,7 @@ const ViewDetails = () => {
       currentTimes,
     };
     console.log(recoProduct);
+
     //   post data to mongodb
     fetch(" http://localhost:5000/recommendation", {
       method: "POST",
@@ -68,10 +70,22 @@ const ViewDetails = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            text: "You Successfully Added",
+            text: "You Successfully Added Recommendation",
+            title: "Please reload the page for recommendation count",
             icon: "success",
           });
         }
+      });
+  };
+
+  const handleIncrement = (id) => {
+    console.log("object", id);
+    fetch(`http://localhost:5000/updateQuerie/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
       });
   };
 
@@ -197,6 +211,7 @@ const ViewDetails = () => {
           <div>
             <button
               type="submit"
+              onClick={() => handleIncrement(id)}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-rose-700 hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Add Recommendation
