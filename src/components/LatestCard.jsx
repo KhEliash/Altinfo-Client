@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 const LatestCard = () => {
   const queries = useLoaderData();
   const [firstSixQueries, setFirstSixQueries] = useState([]);
-  console.log(firstSixQueries);
+  // console.log(firstSixQueries);
 
   useEffect(() => {
     const sortedQueries = [...queries].sort(
@@ -14,11 +14,11 @@ const LatestCard = () => {
     const firstSix = sortedQueries.slice(0, 6);
     setFirstSixQueries(firstSix);
   }, [queries]);
-  console.log(queries);
+  // console.log(queries);
   return (
     <div className="mt-12 bg-base-200 p-5">
       <div className="text-center text-3xl font-bold my-10 ">
-        <h1 >Latest Queries</h1>
+        <h1>Latest Queries</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {firstSixQueries.map((c) => (

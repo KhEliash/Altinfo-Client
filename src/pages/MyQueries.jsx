@@ -9,17 +9,22 @@ const MyQueries = () => {
   const [queries, setQueries] = useState();
   const [querie, setQuerie] = useState([]);
   const [control, setControl] = useState(false);
+  console.log(querie);
 
-  const arr = querie.sort(
+ querie.sort(
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
   );
+  // console.log(arr);
 
   // get data my email
   useEffect(() => {
-    fetch(`https://altinfohub.vercel.app/myQueries?userEmail=${user?.email}`)
+    fetch(`https://altinfohub.vercel.app/myQueries?userEmail=${user?.email}`, {
+      credentials: "include"
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setQueries(data);
         setQuerie(data);
       });
@@ -66,12 +71,13 @@ const MyQueries = () => {
           </button>
         </Link>
       </div>
-     
 
       <div>
         {/* if no queries */}
         {queries?.length === 0 && (
-          <div className="bg-base-200 p-4 text-center font-bold text-red-500">No queries found.</div>
+          <div className="bg-base-200 p-4 text-center font-bold text-red-500">
+            No queries found.
+          </div>
         )}
       </div>
       {/* my queries */}

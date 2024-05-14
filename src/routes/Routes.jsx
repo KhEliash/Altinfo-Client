@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/queries"),
+        loader: () => fetch("https://altinfohub.vercel.app/queries"),
       },
       {
         path: "/login",

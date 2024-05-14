@@ -14,10 +14,10 @@ const ViewDetails = () => {
       });
   }, [id]);
   return (
-    <div className="w-full bg-[#EEEEEE] items-center flex flex-col justify-center">
+    <div className="w-full  items-center flex flex-col justify-center">
      
     
-      <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-1/2 lg:w-2/3 flex flex-col md:flex-row items-center justify-center">
+      <div className="bg-base-200 mt-12 shadow-md rounded-lg p-4 w-full md:w-1/2 lg:w-2/3 flex flex-col md:flex-row items-center justify-center">
         <div className="md:w-1/3 ">
           <img
             src={product.productImageURL}
@@ -48,7 +48,7 @@ const ViewDetails = () => {
       </div>
      
 
-    <div className="bg-white shadow-md rounded-lg p-4 max-w-xl w-full mx-auto mt-6">
+    <div className="bg-base-200 shadow-md rounded-lg p-4 max-w-xl w-full mx-auto mt-6">
       <h2 className="font-bold">User Info:</h2>
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
