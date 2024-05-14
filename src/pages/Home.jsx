@@ -2,6 +2,7 @@ import Banner from "../components/Banner";
 import LatestCard from "../components/LatestCard";
 import NewsLetter from "../components/NewsLetter";
 import Slider from "../components/Slider";
+import Testimonial from "../components/Testimonial";
 
  
 
@@ -12,6 +13,7 @@ const Home = () => {
             <Banner></Banner>
             <LatestCard></LatestCard>
             <NewsLetter></NewsLetter>
+            <Testimonial></Testimonial>
         </div>
     );
 };

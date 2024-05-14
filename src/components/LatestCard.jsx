@@ -27,7 +27,7 @@ const LatestCard = () => {
               <img
                 src={c.productImageURL}
                 alt="Shoes"
-                className="rounded-xl h-[250px] "
+                className="rounded-xl h-[150px] "
               />
             </figure>
             <div className="card-body items-center text-center">
