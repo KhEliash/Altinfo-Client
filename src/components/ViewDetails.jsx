@@ -9,10 +9,10 @@ const ViewDetails = () => {
   const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState({});
-  const [queries, setQueries] = useState({});
+  const [queries, setQueries] = useState([]);
   console.log(queries);
   useEffect(() => {
-    fetch(`http://localhost:5000/singleQueries/${id}`)
+    fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -59,7 +59,7 @@ const ViewDetails = () => {
     console.log(recoProduct);
 
     //   post data to mongodb
-    fetch(" http://localhost:5000/recommendation", {
+    fetch(" https://altinfohub.vercel.app/recommendation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const ViewDetails = () => {
 
   const handleIncrement = (id) => {
     console.log("object", id);
-    fetch(`http://localhost:5000/updateQuerie/${id}`, {
+    fetch(`https://altinfohub.vercel.app/updateQuerie/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -92,7 +92,7 @@ const ViewDetails = () => {
 
   // all recom
   useEffect(() => {
-    fetch(`http://localhost:5000/recom?queryId=${product._id}`)
+    fetch(`https://altinfohub.vercel.app/recom?queryId=${product._id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -101,8 +101,8 @@ const ViewDetails = () => {
   }, [product]);
 
   return (
-    <div className="w-full  items-center flex flex-col justify-center">
-      <div className="bg-base-200 mt-12 shadow-md rounded-lg p-4 w-full md:w-1/2 lg:w-2/3 flex flex-col md:flex-row items-center justify-center">
+    <div className="w-full bg-base-200 items-center flex flex-col justify-center">
+      <div className="bg-base-100 mt-12 shadow-md rounded-lg p-4 w-full md:w-1/2 lg:w-2/3 flex flex-col md:flex-row items-center justify-center">
         <div className="md:w-1/3 ">
           <img
             src={product.productImageURL}
@@ -134,7 +134,7 @@ const ViewDetails = () => {
         </div>
       </div>
 
-      <div className="bg-base-200 shadow-md rounded-lg p-4 max-w-xl w-full mx-auto mt-6">
+      <div className="bg-base-100 shadow-md rounded-lg p-4 max-w-xl w-full mx-auto mt-6">
         <h2 className="font-bold">User Info:</h2>
         <div className="flex items-center space-x-4">
           <div className="flex-shrink-0">
@@ -154,7 +154,7 @@ const ViewDetails = () => {
       </div>
 
       {/* form */}
-      <div className="max-w-md mt-12 mx-auto p-12 bg-white rounded-lg shadow-lg">
+      <div className=" mt-12 mx-auto p-12 bg-base-100 md:w-1/2 lg:w-2/3 rounded-lg shadow-lg">
         <h2 className="text-3xl font-semibold text-rose-600">
           Add Recommendation
         </h2>
@@ -232,7 +232,30 @@ const ViewDetails = () => {
       </div>
 
       {/* all reco for this pro. */}
-      <div></div>
+      <div className="my-24"> 
+      <h1 className="text-center mb-12 text-3xl font-bold "> All recommendations for this product</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-9 bg-base-200 rounded-md w-full">
+       
+        {queries.map((c) => (
+          <div key={c._id} className=" bg-base-100 p-5 shadow-2xl rounded-md">
+            <div className="flex items-center justify-center">
+              <img src={c.productImage} alt="img" className="w-36 h-28" />
+            </div>
+            <div>
+              <p className="text-lg font-bold text-pink-800">
+                Name: <span className="text-black font-normal">{c.productName}</span>
+              </p>
+              <p className="text-lg font-bold text-pink-800">
+                Date: <span className="text-black font-normal">{c.currentTimes}</span>
+              </p>
+              <p className="text-lg font-bold text-pink-800">
+                Recom.Name: <span className="text-black font-normal">{c.RecommenderName}</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      </div>
     </div>
   );
 };
