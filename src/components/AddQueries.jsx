@@ -76,8 +76,6 @@ const AddQueries = () => {
               id="productName"
               type="text"
               name="productName"
-              // value={formData.productName}
-              // onChange={handleChange}
               placeholder="Enter product name"
             />
           </div>
@@ -91,8 +89,6 @@ const AddQueries = () => {
               id="productBrand"
               type="text"
               name="productBrand"
-              // value={formData.productBrand}
-              // onChange={handleChange}
               placeholder="Enter product brand"
             />
           </div>
@@ -109,8 +105,6 @@ const AddQueries = () => {
               id="productImageURL"
               type="text"
               name="productImageURL"
-              // value={formData.productImageURL}
-              // onChange={handleChange}
               placeholder="Enter product image URL"
             />
           </div>
@@ -124,8 +118,6 @@ const AddQueries = () => {
               id="queryTitle"
               type="text"
               name="queryTitle"
-              // value={formData.queryTitle}
-              // onChange={handleChange}
               placeholder="Enter query title"
             />
           </div>
@@ -141,8 +133,6 @@ const AddQueries = () => {
               className="  shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="boycottingReason"
               name="boycottingReason"
-              // value={formData.boycottingReason}
-              // onChange={handleChange}
               placeholder="Enter boycotting reason details"
               rows="4"
             ></textarea>
