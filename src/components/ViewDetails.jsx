@@ -9,7 +9,8 @@ const ViewDetails = () => {
   const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState({});
-  console.log(product);
+  const [queries, setQueries] = useState({});
+  console.log(queries);
   useEffect(() => {
     fetch(`http://localhost:5000/singleQueries/${id}`)
       .then((res) => res.json())
@@ -88,6 +89,16 @@ const ViewDetails = () => {
         // console.log(data);
       });
   };
+
+  // all recom
+  useEffect(() => {
+    fetch(`http://localhost:5000/recom?queryId=${product._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setQueries(data);
+      });
+  }, [product]);
 
   return (
     <div className="w-full  items-center flex flex-col justify-center">
@@ -219,6 +230,9 @@ const ViewDetails = () => {
           </div>
         </form>
       </div>
+
+      {/* all reco for this pro. */}
+      <div></div>
     </div>
   );
 };
