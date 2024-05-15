@@ -10,6 +10,7 @@ const ViewDetails = () => {
   console.log(id);
   const [product, setProduct] = useState({});
   const [queries, setQueries] = useState([]);
+  const [control, setControl] = useState(false);
   console.log(queries);
   useEffect(() => {
     fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
@@ -18,7 +19,7 @@ const ViewDetails = () => {
         setProduct(data);
         console.log(data);
       });
-  }, [id]);
+  }, [id, control]);
 
   // form
   const handleSubmit = (e) => {
@@ -71,8 +72,7 @@ const ViewDetails = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            text: "You Successfully Added Recommendation",
-            title: "Please reload the page for recommendation count",
+            title: "Added Successfully",
             icon: "success",
           });
         }
@@ -87,6 +87,7 @@ const ViewDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
+        setControl(!control);
       });
   };
 
@@ -98,7 +99,7 @@ const ViewDetails = () => {
         console.log(data);
         setQueries(data);
       });
-  }, [product]);
+  }, [product, control]);
 
   return (
     <div className="w-full bg-base-200 items-center flex flex-col justify-center">
@@ -232,29 +233,40 @@ const ViewDetails = () => {
       </div>
 
       {/* all reco for this pro. */}
-      <div className="my-24"> 
-      <h1 className="text-center mb-12 text-3xl font-bold "> All recommendations for this product</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-9 bg-base-200 rounded-md w-full">
-       
-        {queries.map((c) => (
-          <div key={c._id} className=" bg-base-100 p-5 shadow-2xl rounded-md">
-            <div className="flex items-center justify-center">
-              <img src={c.productImage} alt="img" className="w-36 h-28" />
+      <div className="my-24">
+        <h1 className="text-center mb-12 text-3xl font-bold ">
+          {" "}
+          All recommendations for this product
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-9 bg-base-200 rounded-md w-full">
+          {queries.map((c) => (
+            <div key={c._id} className=" bg-base-100 p-5 shadow-2xl rounded-md">
+              <div className="flex items-center justify-center">
+                <img src={c.productImage} alt="img" className="w-36 h-28" />
+              </div>
+              <div>
+                <p className="text-lg font-bold text-pink-800">
+                  Name:{" "}
+                  <span className="text-black font-normal">
+                    {c.productName}
+                  </span>
+                </p>
+                <p className="text-lg font-bold text-pink-800">
+                  Date:{" "}
+                  <span className="text-black font-normal">
+                    {c.currentTimes}
+                  </span>
+                </p>
+                <p className="text-lg font-bold text-pink-800">
+                  Recom.Name:{" "}
+                  <span className="text-black font-normal">
+                    {c.RecommenderName}
+                  </span>
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-lg font-bold text-pink-800">
-                Name: <span className="text-black font-normal">{c.productName}</span>
-              </p>
-              <p className="text-lg font-bold text-pink-800">
-                Date: <span className="text-black font-normal">{c.currentTimes}</span>
-              </p>
-              <p className="text-lg font-bold text-pink-800">
-                Recom.Name: <span className="text-black font-normal">{c.RecommenderName}</span>
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
   );
