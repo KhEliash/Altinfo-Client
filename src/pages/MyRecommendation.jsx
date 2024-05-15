@@ -9,7 +9,7 @@ const MyRecommendation = () => {
   //   console.log(queries);
   // all recom
   useEffect(() => {
-    fetch(` http://localhost:5000/myrecom?email=${user?.email}`)
+    fetch(`https://altinfohub.vercel.app/myrecom?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -29,7 +29,7 @@ const MyRecommendation = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(` http://localhost:5000/delete/${id1}`, {
+        fetch(`https://altinfohub.vercel.app/delete/${id1}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
