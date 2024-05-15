@@ -9,7 +9,7 @@ const MyQueries = () => {
   const [queries, setQueries] = useState();
   const [querie, setQuerie] = useState([]);
   const [control, setControl] = useState(false);
-  console.log(querie);
+  // console.log(querie);
 
   querie.sort(
     (a, b) =>
@@ -24,7 +24,7 @@ const MyQueries = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setQueries(data);
         setQuerie(data);
       });
@@ -48,7 +48,7 @@ const MyQueries = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",

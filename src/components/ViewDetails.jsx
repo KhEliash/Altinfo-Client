@@ -5,19 +5,19 @@ import Swal from "sweetalert2";
 
 const ViewDetails = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [product, setProduct] = useState({});
   const [queries, setQueries] = useState([]);
   const [control, setControl] = useState(false);
-  console.log(queries);
+  // console.log(queries);
   useEffect(() => {
     fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
-        console.log(data);
+        // console.log(data);
       });
   }, [id, control]);
 
@@ -57,7 +57,7 @@ const ViewDetails = () => {
       RecommenderName,
       currentTimes,
     };
-    console.log(recoProduct);
+    // console.log(recoProduct);
 
     //   post data to mongodb
     fetch(" https://altinfohub.vercel.app/recommendation", {
@@ -69,7 +69,7 @@ const ViewDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Added Successfully",
@@ -80,7 +80,7 @@ const ViewDetails = () => {
   };
 
   const handleIncrement = (id) => {
-    console.log("object", id);
+    // console.log("object", id);
     fetch(`https://altinfohub.vercel.app/updateQuerie/${id}`, {
       method: "PUT",
     })
@@ -96,7 +96,7 @@ const ViewDetails = () => {
     fetch(`https://altinfohub.vercel.app/recom?queryId=${product._id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setQueries(data);
       });
   }, [product, control]);

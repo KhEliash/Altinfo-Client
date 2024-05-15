@@ -20,7 +20,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
+  // console.log(user);
   const [loading, setLoading] = useState(true);
   // create user
   const createUser = (email, password) => {
@@ -66,12 +66,12 @@ const AuthProvider = ({ children }) => {
      
         axios.post('https://altinfohub.vercel.app/jwt',loggedUser,{withCredentials: true})
         .then(res=>{
-          console.log('toekn',res.data);
+          // console.log('toekn',res.data);
         })
       }else{
         axios.post('https://altinfohub.vercel.app/logout',loggedUser,{withCredentials:true})
         .then(res=>{
-          console.log(res.data);
+          // console.log(res.data);
         })
       }
     });

@@ -9,7 +9,7 @@ const RecomendetionMe = () => {
     fetch(`https://altinfohub.vercel.app/recomforMe?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setQueries(data);
       });
   }, [user]);

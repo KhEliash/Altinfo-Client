@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 
 const UpdateQueries = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [product, setProduct] = useState({});
-  console.log(id, product);
+  // console.log(id, product);
   useEffect(() => {
     fetch(`https://altinfohub.vercel.app/singleQueries/${id}`)
       .then((res) => res.json())
@@ -40,7 +40,7 @@ const UpdateQueries = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (data.modifiedCount > 0) {
           Swal.fire({

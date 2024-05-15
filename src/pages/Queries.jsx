@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const Queries = () => {
   const queries = useLoaderData();
   const [columns, setColumns] = useState(3);
-  console.log(columns);
+  // console.log(columns);
   const allQuaries = queries;
 
   allQuaries.sort((a, b) => {
@@ -13,7 +13,7 @@ const Queries = () => {
 
     return timeB - timeA;
   });
-  console.log(allQuaries);
+  // console.log(allQuaries);
 
   // Function to handle grid layout change
   const handleGridToggle = (numColumns) => {

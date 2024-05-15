@@ -7,7 +7,7 @@ import { FaBars } from "react-icons/fa";
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

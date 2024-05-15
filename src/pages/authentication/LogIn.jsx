@@ -22,7 +22,7 @@ const LogIn = () => {
               navigate(location?.state ? location.state : "/");
           })
           .catch((error) => {
-            console.log(error.message);
+            // console.log(error.message);
             Swal.fire({
                 title: "Oops!",
                 text: `${error.message}`,
@@ -45,7 +45,7 @@ const LogIn = () => {
               });
           })
           .catch((error) => {
-            console.log(error.message);
+            // console.log(error.message);
             Swal.fire({
                 title: "Oops!",
                 text: `${error.message}`,

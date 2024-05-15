@@ -15,7 +15,7 @@ const Registration = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name,photo,email,password);
+        // console.log(name,photo,email,password);
         createUser(email,password)
         .then((result) => {
             
@@ -27,7 +27,7 @@ const Registration = () => {
                
           })
           .catch((error) => {
-            console.log(error.message);
+            // console.log(error.message);
             Swal.fire({
                 title: "Oops!",
                 text: `${error.message}`,
