@@ -62,7 +62,7 @@ const AddQueries = () => {
 
   return (
     <div className="flex justify-center items-center bg-[#EEEEEE]">
-      <div className="shadow-2xl w-1/2 bg-[#C73659] rounded-xl  my-6">
+      <div className="shadow-2xl w-2/3 lg:h-1/2 bg-[#C73659] rounded-xl  my-6">
         <form
           className="max-w-lg mx-auto mt-8 px-4 lg:px-0 "
           onSubmit={handleAdd}

@@ -42,7 +42,7 @@ const MyRecommendation = () => {
                 icon: "success",
               });
 
-              fetch(`http://localhost:5000/updateInc/${id2}`, {
+              fetch(`https://altinfohub.vercel.app/updateInc/${id2}`, {
                 method: "PUT",
               })
                 .then((res) => res.json())
@@ -80,7 +80,7 @@ const MyRecommendation = () => {
               {queries.map((c, index) => (
                 <tr key={c._id}>
                   <th>{index + 1}</th>
-                  <td>{c.productName}</td>
+                  <td>{c.productNameQ}</td>
                   <td>{c.userName}</td>
                   <td>
                     <img src={c.productImage} alt="" className="w-12 h-12" />

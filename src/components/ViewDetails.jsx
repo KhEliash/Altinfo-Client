@@ -248,7 +248,7 @@ const ViewDetails = () => {
                 <p className="text-lg font-bold text-pink-800">
                   Name:{" "}
                   <span className="text-black font-normal">
-                    {c.productName}
+                    {c.productNameQ}
                   </span>
                 </p>
                 <p className="text-lg font-bold text-pink-800">

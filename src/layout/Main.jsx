@@ -10,7 +10,7 @@ const Main = () => {
       <Navbar></Navbar>
 
       {/* main content */}
-      <div>
+      <div className="min-h-screen">
         <Outlet></Outlet>
       </div>
 

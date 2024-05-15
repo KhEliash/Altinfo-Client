@@ -11,7 +11,7 @@ const MyQueries = () => {
   const [control, setControl] = useState(false);
   console.log(querie);
 
- querie.sort(
+  querie.sort(
     (a, b) =>
       new Date(b.userInfo.currentTimes) - new Date(a.userInfo.currentTimes)
   );
@@ -20,7 +20,7 @@ const MyQueries = () => {
   // get data my email
   useEffect(() => {
     fetch(`https://altinfohub.vercel.app/myQueries?userEmail=${user?.email}`, {
-      credentials: "include"
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -31,6 +31,7 @@ const MyQueries = () => {
   }, [user, control]);
 
   const handleDelete = (id) => {
+    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -40,12 +41,14 @@ const MyQueries = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
+      
       if (result.isConfirmed) {
-        fetch(`https://altinfohub.vercel.app/delete/${id}`, {
+        fetch(`https://altinfohub.vercel.app/deleteq/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
