@@ -12,6 +12,7 @@ import AddQueries from "../components/AddQueries";
 import PrivetRouts from "./PrivateRoutes";
 import ViewDetails from "../components/ViewDetails";
 import UpdateQueries from "../components/UpdateQueries";
+import AlUsers from "../components/AlUsers";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,11 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdateQueries></UpdateQueries>,
       },
+      {
+        path: '/allUsers',
+        element: <AlUsers></AlUsers>,
+        loader: () => fetch("https://altinfohub.vercel.app/queries"),
+      }
     ],
   },
 ]);

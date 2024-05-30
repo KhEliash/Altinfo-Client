@@ -47,6 +47,18 @@ const Navbar = () => {
           Queries
         </NavLink>
       </li>
+      <li>
+        <NavLink
+        to={'/allUsers'}
+        className={({ isActive }) => {
+          return isActive
+            ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
+            : "";
+        }}
+        >
+        All Users
+        </NavLink>
+      </li>
       {user?.email ? (
         <>
           <li>

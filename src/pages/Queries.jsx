@@ -13,7 +13,7 @@ const Queries = () => {
 
     return timeB - timeA;
   });
-  // console.log(allQuaries);
+  console.log(allQuaries);
 
   // Function to handle grid layout change
   const handleGridToggle = (numColumns) => {
