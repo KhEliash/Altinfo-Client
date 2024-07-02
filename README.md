@@ -40,6 +40,19 @@ Make sure you have Node.js and npm installed.
    ```sh
    npm run server
    ```
+## Languages and Tools used:
+
+- **HTML**: Structuring the content of the web pages.
+- **CSS**: Styling the web pages for a visually appealing interface.
+- **Tailwind CSS**: Utility-first CSS framework for fast UI development.
+- **JavaScript**: Enhancing interactivity and functionality of web pages.
+- **React**: Building dynamic and responsive user interfaces.
+- **Node.js**: Server-side runtime environment for executing JavaScript.
+- **Express.js**: Web framework for building server-side applications and APIs.
+- **MongoDB**: NoSQL database for storing and managing data.
+- **Firebase**: Platform for building web and mobile applications with authentication, databases, and hosting.
+- **Jwt**: for cookie token verification 
+
 
 ## Key Features
 - **Explore Alternative Products:** Discover a wide range of alternative products in various categories.
