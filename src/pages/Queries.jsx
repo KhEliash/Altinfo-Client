@@ -64,7 +64,7 @@ const Queries = () => {
                   </h2>
                   <p className="text-2xl font-bold">
                     <span className="font-bold text-2xl text-[#C73659]">
-                      Company:
+                      Company :
                     </span>{" "}
                     {c.productBrand}
                   </p>
