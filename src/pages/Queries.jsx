@@ -1,51 +1,48 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Queries = () => {
   const queries = useLoaderData();
   const [columns, setColumns] = useState(3);
-  // console.log(columns);
   const allQuaries = queries;
+  console.log(allQuaries);
 
   allQuaries.sort((a, b) => {
     const timeA = new Date(a.userInfo.currentTimes);
     const timeB = new Date(b.userInfo.currentTimes);
-
     return timeB - timeA;
   });
-  console.log(allQuaries);
-
-  // Function to handle grid layout change
-  const handleGridToggle = (numColumns) => {
-    setColumns(numColumns);
+  // console.log(allQuaries);
+  const handleGridToggle = (event) => {
+    setColumns(parseInt(event.target.value, 10));
   };
 
   return (
     <div className="my-12 bg-base-200 p-5">
-      {/* Toggle buttons */}
+      {/* search bar */}
+
+      {/* Toggle buttons for grid column change*/}
       <div className="flex justify-center mb-4">
-        <button
-          onClick={() => handleGridToggle(1)}
-          className="btn mx-2 bg-red-800 text-white"
+        <select
+          onChange={handleGridToggle}
+          className="bg-red-800 text-white p-2 rounded border-none"
+          value={columns}
         >
-          1 Column
-        </button>
-        <button
-          onClick={() => handleGridToggle(2)}
-          className="btn mx-2 bg-red-800 text-white"
-        >
-          2 Columns
-        </button>
-        <button
-          onClick={() => handleGridToggle(3)}
-          className="btn mx-2 bg-red-800 text-white"
-        >
-          3 Columns
-        </button>
+          <option value={1}>1 Column</option>
+          <option value={2}>2 Columns</option>
+          <option value={3}>3 Columns</option>
+        </select>
       </div>
+
       <div
-         
-        className={`grid ${columns === 1 ? 'grid-cols-1' : columns === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-4`}
+        className={`grid ${
+          columns === 1
+            ? "grid-cols-1"
+            : columns === 2
+            ? "grid-cols-2"
+            : "grid-cols-3"
+        } gap-4`}
       >
         {allQuaries.map((c) => {
           return (
@@ -58,38 +55,40 @@ const Queries = () => {
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h2 className="card-title">
-                  <span className="font-bold text-2xl text-[#C73659]">
-                    Name:
-                  </span>
-                  {c.productName}
-                </h2>
-                <p className="text-2xl font-bold">
-                  <span className="font-bold text-2xl text-[#C73659]">
-                    Company:
-                  </span>{" "}
-                  {c.productBrand}
-                </p>
-                <div className="text-left text-gray-600 space-y-3">
-                  <p className="text-2xl ">
+                <div className="text-left space-y-1">
+                  <h2 className="card-title">
                     <span className="font-bold text-2xl text-[#C73659]">
-                      Title:{" "}
+                      Name:
                     </span>
-                    {c.queryTitle.slice(0, 50)}...
+                    {c.productName}
+                  </h2>
+                  <p className="text-2xl font-bold">
+                    <span className="font-bold text-2xl text-[#C73659]">
+                      Company:
+                    </span>{" "}
+                    {c.productBrand}
                   </p>
-                  <p className=" text-2xl">
+                  <div className="text-left text-gray-600 space-y-3">
+                    <p className="text-2xl ">
+                      <span className="font-bold text-2xl text-[#C73659]">
+                        Title:{" "}
+                      </span>
+                      {c.queryTitle.slice(0, 50)}...
+                    </p>
+                    <p className=" text-2xl">
+                      <span className="font-bold text-2xl text-[#C73659]">
+                        Reason:{" "}
+                      </span>
+                      {c.boycottingReason.slice(0, 90)}...
+                    </p>
+                  </div>
+                  <p>
                     <span className="font-bold text-2xl text-[#C73659]">
-                      Reason:{" "}
+                      Posted Time:{" "}
                     </span>
-                    {c.boycottingReason.slice(0, 90)}...
+                    {c.userInfo.currentTimes}
                   </p>
                 </div>
-                <p>
-                  <span className="font-bold text-2xl text-[#C73659]">
-                    Posted Time:{" "}
-                  </span>
-                  {c.userInfo.currentTimes}
-                </p>
                 <div className="flex items-center justify-around bg-gray-300 p-2 rounded-xl w-full">
                   <img
                     src={c.userInfo.userImage}

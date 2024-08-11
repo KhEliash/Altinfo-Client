@@ -61,7 +61,7 @@ const LatestCard = () => {
                 </span>
                 {c.userInfo.currentTimes}
               </p>
-              <div className="flex items-center justify-around bg-gray-300 p-2 rounded-xl w-full">
+              <div className="flex items-center justify-around bg-base-200 p-2 rounded-xl w-full">
                 <img
                   src={c.userInfo.userImage}
                   alt=""

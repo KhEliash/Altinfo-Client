@@ -31,7 +31,6 @@ const MyQueries = () => {
   }, [user, control]);
 
   const handleDelete = (id) => {
-    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -41,7 +40,6 @@ const MyQueries = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      
       if (result.isConfirmed) {
         fetch(`https://altinfohub.vercel.app/deleteq/${id}`, {
           method: "DELETE",
@@ -99,7 +97,7 @@ const MyQueries = () => {
               <p className="text-2xl font-bold"> {c.productBrand}</p>
               <div className="card-actions">
                 <Link to={`/viewdetails/${c._id}`}>
-                  <button className="btn bg-[#c0425c] hover:bg-[#C73659] text-white">
+                  <button className="btn bg-[#A91D3A] hover:bg-[#C73659] text-white">
                     View Details
                   </button>
                 </Link>
