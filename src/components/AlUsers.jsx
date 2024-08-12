@@ -2,11 +2,13 @@ import { useLoaderData } from "react-router-dom";
 
 const AlUsers = () => {
   const queries = useLoaderData();
-  console.log(queries);
+  // console.log(queries);
   return (
     <div>
-        <h1 className="text-center my-12 text-2xl font-bold text-rose-600">All Users Who add Queries</h1>
-    
+      <h1 className="text-center my-12 text-2xl font-bold text-rose-600">
+        All Users Who add Queries
+      </h1>
+
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

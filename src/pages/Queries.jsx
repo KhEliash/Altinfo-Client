@@ -6,21 +6,55 @@ const Queries = () => {
   const queries = useLoaderData();
   const [columns, setColumns] = useState(3);
   const allQuaries = queries;
-  console.log(allQuaries);
 
   allQuaries.sort((a, b) => {
     const timeA = new Date(a.userInfo.currentTimes);
     const timeB = new Date(b.userInfo.currentTimes);
     return timeB - timeA;
   });
-  // console.log(allQuaries);
+
   const handleGridToggle = (event) => {
     setColumns(parseInt(event.target.value, 10));
+  };
+
+  // search
+  const [searchText, setSearchText] = useState("");
+
+  const [products, setProducts] = useState([]);
+  if (products.length === 0) {
+    setProducts(allQuaries);
+  }
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(
+        `https://altinfohub.vercel.app/products/search?q=${searchText}`
+      );
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   };
 
   return (
     <div className="my-12 bg-base-200 p-5">
       {/* search bar */}
+
+      <div className="flex justify-center items-center mb-3">
+        <input
+          type="text"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          placeholder="Search products..."
+          className="p-2 rounded-l-md border border-red-700"
+        />
+        <button
+          onClick={fetchProducts}
+          className="p-2 bg-rose-800 text-white rounded-r-md border border-rose-800"
+        >
+          Search
+        </button>
+      </div>
 
       {/* Toggle buttons for grid column change*/}
       <div className="flex justify-center mb-4">
@@ -44,7 +78,7 @@ const Queries = () => {
             : "grid-cols-3"
         } gap-4`}
       >
-        {allQuaries.map((c) => {
+        {products.map((c) => {
           return (
             <div key={c._id} className="card bg-base-100 shadow-xl">
               <figure className="px-10 pt-10">
@@ -92,7 +126,7 @@ const Queries = () => {
                 <div className="flex items-center justify-around bg-gray-300 p-2 rounded-xl w-full">
                   <img
                     src={c.userInfo.userImage}
-                    alt=""
+                    alt="userImage"
                     className="rounded-full"
                   />
                   <h3 className="text-2xl font-bold ">
