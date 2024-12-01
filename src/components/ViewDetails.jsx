@@ -103,7 +103,6 @@ const ViewDetails = () => {
 
   return (
     <div className="w-full bg-base-200 items-center flex flex-col justify-center">
- 
       <div className="bg-base-100 mt-12 shadow-lg rounded-lg p-6 max-w-5xl w-full mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-6 md:space-y-0">
           {/* Product Info Section */}
@@ -174,6 +173,7 @@ const ViewDetails = () => {
             </label>
             <input
               type="text"
+              required="true"
               name="title"
               id="title"
               className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
@@ -204,6 +204,7 @@ const ViewDetails = () => {
             </label>
             <input
               type="text"
+              required="true"
               name="productImage"
               id="productImage"
               className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
@@ -245,7 +246,7 @@ const ViewDetails = () => {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-9 bg-base-200 rounded-md w-full">
           {queries.map((c) => (
-            <div key={c._id} className=" bg-base-100 p-5 shadow-2xl rounded-md">
+            <div key={c._id} className=" bg-base-100 p-5 shadow-md rounded-md">
               <div className="flex items-center justify-center">
                 <img src={c.productImage} alt="img" className="w-36 h-28" />
               </div>
