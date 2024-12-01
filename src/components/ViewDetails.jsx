@@ -103,53 +103,58 @@ const ViewDetails = () => {
 
   return (
     <div className="w-full bg-base-200 items-center flex flex-col justify-center">
-      <div className="bg-base-100 mt-12 shadow-md rounded-lg p-4 w-full md:w-1/2 lg:w-2/3 flex flex-col md:flex-row items-center justify-center">
-        <div className="md:w-1/3 ">
-          <img
-            src={product.productImageURL}
-            alt=""
-            className="w-full h-auto rounded-lg"
-          />
-        </div>
-        <div className="md:w-2/3 md:pl-4">
-          <p className="text-gray-600 mb-2">
-            <strong>Product Name:</strong> {product.productName}
-          </p>
-          <h2 className="text-xl font-semibold mb-2">
-            <strong>Queries Title</strong>
-            {product.queryTitle}
-          </h2>
-          <p className="text-gray-600 mb-2">
-            <strong>Brand Name:</strong> {product.productBrand}
-          </p>
-          <p className="text-gray-600 mb-2">
-            <strong>Alternation Reason:</strong> {product.boycottingReason}
-          </p>
-          <p className="text-gray-600 mb-2">
-            <strong>Date Posted:</strong> {product.userInfo?.currentTimes}
-          </p>
-          <p className="text-gray-600 mb-2">
-            <strong>Recommendation Count:</strong>{" "}
-            {product.userInfo?.recommendationCount}
-          </p>
-        </div>
-      </div>
-
-      <div className="bg-base-100 shadow-md rounded-lg p-4 max-w-xl w-full mx-auto mt-6">
-        <h2 className="font-bold">User Info:</h2>
-        <div className="flex items-center space-x-4">
-          <div className="flex-shrink-0">
+ 
+      <div className="bg-base-100 mt-12 shadow-lg rounded-lg p-6 max-w-5xl w-full mx-auto">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-6 md:space-y-0">
+          {/* Product Info Section */}
+          <div className="md:w-1/3 flex-shrink-0">
             <img
-              src={product.userInfo?.userImage}
-              alt=""
-              className="h-12 w-12 rounded-full"
+              src={product.productImageURL}
+              alt={product.productName}
+              className="w-full h-auto rounded-lg shadow-md"
             />
           </div>
-          <div>
-            <h2 className="text-xl font-medium text-gray-800">
-              {product.userInfo?.userName}
+
+          <div className="md:w-2/3 md:pl-6">
+            <p className="text-gray-600 mb-2">
+              <strong>Product Name:</strong> {product.productName}
+            </p>
+            <h2 className="text-2xl font-semibold mb-2">
+              <strong>Query Title:</strong> {product.queryTitle}
             </h2>
-            <p className="text-gray-600">{product.userInfo?.userEmail}</p>
+            <p className="text-gray-600 mb-2">
+              <strong>Brand Name:</strong> {product.productBrand}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <strong>Alteration Reason:</strong> {product.boycottingReason}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <strong>Date Posted:</strong> {product.userInfo?.currentTimes}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <strong>Recommendation Count:</strong>{" "}
+              {product.userInfo?.recommendationCount}
+            </p>
+          </div>
+        </div>
+
+        {/* User Info Section */}
+        <div className="mt-6 border-t border-gray-200 pt-6">
+          <h2 className="font-bold text-2xl mb-4">User Info:</h2>
+          <div className="flex items-center space-x-6">
+            <div className="flex-shrink-0">
+              <img
+                src={product.userInfo?.userImage}
+                alt="User Avatar"
+                className="h-16 w-16 rounded-full border-2 border-gray-300"
+              />
+            </div>
+            <div>
+              <h2 className="text-xl font-medium text-gray-800">
+                {product.userInfo?.userName}
+              </h2>
+              <p className="text-gray-600">{product.userInfo?.userEmail}</p>
+            </div>
           </div>
         </div>
       </div>
