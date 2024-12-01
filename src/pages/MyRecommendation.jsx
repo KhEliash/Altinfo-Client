@@ -48,7 +48,7 @@ const MyRecommendation = () => {
                 .then((res) => res.json())
                 .then((data) => {
                   //   console.log(data);
-                  //   setControl(!control);
+                  setControl(!control);
                 });
 
               setControl(!control);
@@ -63,36 +63,62 @@ const MyRecommendation = () => {
       <h1 className="text-center text-3xl font-bold my-12">
         My Recommendations
       </h1>
-      <div>
+      <div className="my-12">
         <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
+          <table className="table-auto w-full bg-white shadow-lg rounded-lg border border-gray-200">
+            {/* Table Head */}
+            <thead className="bg-rose-700 text-white">
               <tr>
-                <th>No</th>
-                <th>Product Name</th>
-                <th>Poster Name</th>
-                <th>Product Img</th>
-                <th>Delete</th>
+                <th className="px-4 py-2 text-left text-sm font-semibold">
+                  No
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-semibold">
+                  Product Name
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-semibold">
+                  Poster Name
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-semibold">
+                  Product Img
+                </th>
+                <th className="px-4 py-2 text-center text-sm font-semibold">
+                  Delete
+                </th>
               </tr>
             </thead>
+            {/* Table Body */}
             <tbody>
               {queries.map((c, index) => (
-                <tr key={c._id}>
-                  <th>{index + 1}</th>
-                  <td>{c.productNameQ}</td>
-                  <td>{c.userName}</td>
-                  <td>
-                    <img src={c.productImage} alt="" className="w-12 h-12" />
+                <tr
+                  key={c._id}
+                  className={`hover:bg-rose-50 ${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                  }`}
+                >
+                  <td className="px-4 py-3 text-sm text-gray-700">
+                    {index + 1}
                   </td>
-                  <th>
+                  <td className="px-4 py-3 text-sm text-gray-700">
+                    {c.productNameQ}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-gray-700">
+                    {c.userName}
+                  </td>
+                  <td className="px-4 py-3">
+                    <img
+                      src={c.productImage}
+                      alt="Product"
+                      className="w-14 h-14 rounded-md border border-gray-300"
+                    />
+                  </td>
+                  <td className="px-4 py-3 text-center">
                     <button
                       onClick={() => handleDelete(c._id, c.queryId)}
-                      className="btn bg-rose-600 text-white btn-xs"
+                      className="px-3 py-1 bg-rose-600 text-white text-sm font-semibold rounded-md hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-400"
                     >
                       Delete
                     </button>
-                  </th>
+                  </td>
                 </tr>
               ))}
             </tbody>
