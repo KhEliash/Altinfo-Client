@@ -37,8 +37,8 @@ const Registration = () => {
   return (
     <div className="py-5 px-2 flex items-center justify-center  min-h-screen">
       <div className="flex  w-full  mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
-        <div className="hidden bg-cover lg:block lg:w-1/2">
-          <img src={regimg} alt="" className="w-full h-full" />
+        <div className="hidden bg-cover  lg:w-1/2 lg:flex items-center justify-center">
+          <img src={regimg} alt="" className="w-full " />
         </div>
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">

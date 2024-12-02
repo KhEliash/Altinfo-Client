@@ -59,10 +59,10 @@ const LogIn = () => {
     <div className="py-6 px-2 flex justify-center items-center min-h-screen">
       <div className="flex w-full  mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
         <div
-          className="hidden bg-cover lg:block lg:w-1/2 "
+          className="hidden bg-cover lg:flex items-center lg:w-1/2 "
         
          >
-            <img src={loginimg} alt="" className='w-full h-full'/>
+            <img src={loginimg} alt="" className='w-full '/>
         </div>
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
