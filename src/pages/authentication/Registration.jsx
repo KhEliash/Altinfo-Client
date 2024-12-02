@@ -1,65 +1,59 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-import regimg from '../../assets/images/regis.avif';
+import regimg from "../../assets/images/regis.avif";
 
 import logo from "../../assets/images/altinfo.png";
 import Swal from "sweetalert2";
 
 const Registration = () => {
-    const {createUser,updateUserProfile}= useContext(AuthContext);
-    const handleRegister =(e)=>{
-        e.preventDefault();
-        const form =  e.target
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        // console.log(name,photo,email,password);
-        createUser(email,password)
-        .then((result) => {
-            
-            Swal.fire({
-                title: "Good job!",
-                text: "You Successfully Loged in!",
-                icon: "success"
-              });
-               
-          })
-          .catch((error) => {
-            // console.log(error.message);
-            Swal.fire({
-                title: "Oops!",
-                text: `${error.message}`,
-                icon: "error"
-              });
-           })
-        updateUserProfile(name,photo);
-        
-
-    }
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(name,photo,email,password);
+    createUser(email, password)
+      .then((result) => {
+        Swal.fire({
+          title: "Good job!",
+          text: "You Successfully Loged in!",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        // console.log(error.message);
+        Swal.fire({
+          title: "Oops!",
+          text: `${error.message}`,
+          icon: "error",
+        });
+      });
+    updateUserProfile(name, photo);
+  };
   return (
-    <div>
-      <div className="flex flex-row-reverse w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
-        <div
-          className="hidden bg-cover lg:block lg:w-1/2"
-         >
-            <img src={regimg} alt="" className="w-full h-full"/>
-         </div>
+    <div className="py-5 px-2 flex items-center justify-center  min-h-screen">
+      <div className="flex  w-full  mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+        <div className="hidden bg-cover lg:block lg:w-1/2">
+          <img src={regimg} alt="" className="w-full h-full" />
+        </div>
 
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex justify-center mx-auto">
-            <img src={logo} alt=""  className="  w-32 rounded-xl"/>
-           </div>
+            <img src={logo} alt="" className="  w-32 rounded-xl" />
+          </div>
 
           <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
             Welcome !
           </p>
 
-          <form  onSubmit={handleRegister}>
+          <form onSubmit={handleRegister}>
             <div className="mt-4">
               <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-                 Name
+                Name
               </label>
               <input
                 id="LoggingEmailAddress"
@@ -70,7 +64,7 @@ const Registration = () => {
             </div>
             <div className="mt-4">
               <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
-                 Photo
+                Photo
               </label>
               <input
                 id="LoggingEmailAddress"
@@ -116,7 +110,8 @@ const Registration = () => {
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 
-            <Link to={'/login'}
+            <Link
+              to={"/login"}
               href="#"
               className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline"
             >
