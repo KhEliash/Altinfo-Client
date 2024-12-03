@@ -153,7 +153,7 @@ const Navbar = () => {
           <div className="">
             {user ? (
               <button
-                className="btn bg-[#A91D3A] text-white"
+                className="px-2 lg:px-4 py-1 lg:py-2 rounded-md bg-[#A91D3A] text-white"
                 onClick={() => logOut()}
               >
                 Logout
