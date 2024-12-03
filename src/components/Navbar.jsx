@@ -49,14 +49,14 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-        to={'/allUsers'}
-        className={({ isActive }) => {
-          return isActive
-            ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
-            : "";
-        }}
+          to={"/allUsers"}
+          className={({ isActive }) => {
+            return isActive
+              ? "text-[#C73659] rounded-none border-4 border-t-0 border-x-0 border-b-[#C73659]"
+              : "";
+          }}
         >
-        All Users
+          All Users
         </NavLink>
       </li>
       {user?.email ? (
@@ -107,10 +107,12 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-200 ">
         <div className="navbar-start">
-          <Link to={"/"} className="btn btn-ghost text-xl">
-            <img src={logo} alt="" className="w-12 rounded-xl" />
+          <Link to={"/"} className=" text-xl">
+            <img src={logo} alt="" className="w-8 mr-1 lg:w-10 rounded-xl" />
           </Link>
-          <h1 className="lg:text-3xl  font-bold text-[#A91D3A]">ALTINFOHUB</h1>
+          <h1 className="text-sm lg:text-2xl  font-bold text-[#A91D3A]">
+            ALTINFOHUB
+          </h1>
         </div>
 
         <div className="navbar-center hidden lg:flex">
@@ -171,7 +173,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               {/* <div className="w-10 rounded-full"> */}
-                <FaBars/>
+              <FaBars />
               {/* </div> */}
             </div>
             <ul
