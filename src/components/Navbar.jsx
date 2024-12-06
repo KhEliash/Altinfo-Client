@@ -105,10 +105,10 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-[#C73659]">
+      <div className="navbar rounded-md">
         <div className="navbar-start">
           <Link to={"/"} className=" text-xl">
-            <img src={logo} alt="" className="w-8 mr-1 lg:w-10 rounded-xl" />
+            <img src={logo} alt="" className="w-8 mr-1 lg:w-10 rounded" />
           </Link>
           <h1 className="text-sm lg:text-2xl  font-bold text-[#A91D3A]">
             ALTINFOHUB
@@ -121,7 +121,7 @@ const Navbar = () => {
 
         <div className=" navbar-end">
           {/* toggle */}
-          <div className="mr-2">
+          <div className="lg:mr-2   flex items-center justify-center">
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input
@@ -160,7 +160,7 @@ const Navbar = () => {
               </button>
             ) : (
               <Link to={"/login"}>
-                <button className="px-2 py-1 lg:px-4 lg:py-2 rounded-md  bg-[#A91D3A] text-white hover:bg-[#a7354c]">
+                <button className="px-2 py-1 lg:px-4 lg:py-2 rounded-md  bg-[#A91D3A] text-white hover:bg-[#a7354c] text-sm lg:text-base">
                   Log-in
                 </button>
               </Link>
