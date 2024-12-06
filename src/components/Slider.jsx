@@ -20,7 +20,7 @@ const Slider = () => {
                 AltInfoHub.
               </h1> */}
 
-              <div class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white py-12 px-6 md:px-12 text-center">
+              <div class=" text-left space-y-7 py-12 px-6 md:px-12">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
                   Unlocking Alternative Solutions
                 </h1>
@@ -33,7 +33,7 @@ const Slider = () => {
                 <div class="mt-8">
                   <a
                     href="#explore"
-                    class="bg-white text-indigo-600 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
+                    class="bg-rose-200 text-indigo-600 hover:bg-rose-300 font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
                   >
                     Explore Now
                   </a>
