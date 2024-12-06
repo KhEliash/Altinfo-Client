@@ -15,10 +15,30 @@ const Slider = () => {
         <div className="flex bg-[#C73659] h-full">
           <div className=" hidden  w-1/2 lg:flex items-center justify-start pl-10">
             <Slide cascade>
-              <h1 className="text-3xl lg:text-5xl font-extrabold text-gray-100 dark:text-[#151515] ">
+              {/* <h1 className="text-3xl lg:text-5xl font-extrabold text-gray-100 dark:text-[#151515] ">
                 Unlocking Alternative Solutions: Explore, Compare, Decide with
                 AltInfoHub.
-              </h1>
+              </h1> */}
+
+              <div class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white py-12 px-6 md:px-12 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                  Unlocking Alternative Solutions
+                </h1>
+                <p class="text-lg md:text-xl font-light max-w-3xl mx-auto">
+                  Discover the best alternatives to your favorite products and
+                  services. Explore, compare, and make informed decisions with{" "}
+                  <span class="font-semibold">AltInfoHub</span>—your trusted
+                  guide to smarter choices.
+                </p>
+                <div class="mt-8">
+                  <a
+                    href="#explore"
+                    class="bg-white text-indigo-600 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
+                  >
+                    Explore Now
+                  </a>
+                </div>
+              </div>
             </Slide>
           </div>
           <div className=" w-full lg:w-1/2 absolute bottom-0 top-0  right-0 ">
