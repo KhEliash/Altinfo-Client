@@ -12,7 +12,7 @@ const Slider = () => {
   return (
     <div>
       <div className="   relative h-[400px] lg:h-[600px]">
-        <div className="flex bg-[#C73659] h-full">
+        <div className="flex   h-full">
           <div className=" hidden  w-1/2 lg:flex items-center justify-start pl-10">
             <Slide cascade>
               {/* <h1 className="text-3xl lg:text-5xl font-extrabold text-gray-100 dark:text-[#151515] ">
@@ -21,10 +21,10 @@ const Slider = () => {
               </h1> */}
 
               <div class=" text-left space-y-7 py-12 px-6 md:px-12">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                  Unlocking Alternative Solutions
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-800 dark:text-gray-300">
+                  Unlock Alternative Solutions
                 </h1>
-                <p class="text-lg md:text-xl font-light max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl font-light max-w-3xl mx-auto text-gray-700 dark:text-gray-400">
                   Discover the best alternatives to your favorite products and
                   services. Explore, compare, and make informed decisions with{" "}
                   <span class="font-semibold">AltInfoHub</span>—your trusted
@@ -33,7 +33,7 @@ const Slider = () => {
                 <div class="mt-8">
                   <a
                     href="#explore"
-                    class="bg-rose-200 text-indigo-600 hover:bg-rose-300 font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
+                    class="bg-[#C73659] text-gray-200 hover:bg-rose-600 font-medium py-3 px-6 rounded-lg shadow-lg transition duration-300"
                   >
                     Explore Now
                   </a>

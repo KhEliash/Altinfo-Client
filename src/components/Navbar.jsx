@@ -105,7 +105,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-200 ">
+      <div className="navbar bg-[#C73659]">
         <div className="navbar-start">
           <Link to={"/"} className=" text-xl">
             <img src={logo} alt="" className="w-8 mr-1 lg:w-10 rounded-xl" />
